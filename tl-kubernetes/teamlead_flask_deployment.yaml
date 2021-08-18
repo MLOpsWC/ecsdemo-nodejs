@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamlead-flask-server
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask-serve
+  template:
+    metadata:
+      labels:
+        app: flask-serve
+    spec:
+      containers:
+        - name: teamlead-flask
+          image: 741753774623.dkr.ecr.us-east-1.amazonaws.com/teamlead/flask:single-sms
+          ports:
+            - containerPort: 8080
+            - containerPort: 8081
+         
